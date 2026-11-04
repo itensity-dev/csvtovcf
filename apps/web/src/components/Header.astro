@@ -1,0 +1,68 @@
+---
+import { LANG_META, type Lang } from '../i18n/config';
+import { dict } from '../i18n';
+import { allPages } from '../lib/routes';
+import type { PageId } from '../i18n/pages';
+
+interface Props {
+  lang: Lang;
+  alternates: { lang: Lang; path: string }[];
+}
+const { lang, alternates } = Astro.props;
+const d = dict(lang);
+const pages = (await allPages()).filter((p) => p.lang === lang);
+const by = (id: PageId) => pages.find((p) => p.id === id);
+const tools = (['home', 'excel-to-vcf', 'google-contacts-csv-to-vcf', 'outlook-csv-to-vcf'] as PageId[]).map(by).filter((x) => !!x);
+const guides = (['import-iphone', 'import-android', 'import-google-contacts', 'import-outlook'] as PageId[]).map(by).filter((x) => !!x);
+const articles = (['what-is-vcf', 'garbled-contacts', 'bulk-add-contacts', 'excel-phone-e11'] as PageId[]).map(by).filter((x) => !!x);
+const current = Astro.url.pathname;
+const home = by('home')?.path ?? '/';
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href={home} aria-label="csvtovcf — home">csv<span class="to">to</span>vcf</a>
+    <nav aria-label={d.nav.menu}>
+      <ul class="nav">
+        {tools.map((p) => <li><a href={p!.path} aria-current={current === p!.path ? 'page' : undefined}>{p!.entry.data.nav}</a></li>)}
+        <li>
+          <details class="menu">
+            <summary>{d.nav.guides}</summary>
+            <ul class="menu__list">
+              {guides.map((p) => <li><a href={p!.path}>{p!.entry.data.nav}</a></li>)}
+              <li class="menu__sep" role="separator"></li>
+              {articles.map((p) => <li><a href={p!.path}>{p!.entry.data.nav}</a></li>)}
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <details class="menu menu--end">
+        <summary aria-label={d.header.language}><span class="mono">{LANG_META[lang].hreflang.toUpperCase()}</span></summary>
+        <ul class="menu__list" lang="">
+          {
+            alternates.map((a) => (
+              <li>
+                <a href={a.path} hreflang={LANG_META[a.lang].hreflang} lang={LANG_META[a.lang].hreflang} aria-current={a.lang === lang ? 'true' : undefined}>
+                  {LANG_META[a.lang].name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label={d.header.theme}
+        title={d.header.theme}
+        data-lauto={d.header.themeAuto}
+        data-llight={d.header.themeLight}
+        data-ldark={d.header.themeDark}
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5" /><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor" /></svg>
+      </button>
+    </div>
+  </div>
+</header>

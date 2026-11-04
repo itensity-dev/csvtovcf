@@ -1,0 +1,26 @@
+/* IBM Plex Sans / Mono (SIL OFL 1.1), self-hosted via @fontsource; unicode-range subsets, font-display: swap. */
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+/* Downloaded only when Arabic / Devanagari characters appear on the page (unicode-range). */
+@import '@fontsource/ibm-plex-sans-arabic/arabic-400.css';
+@import '@fontsource/noto-sans-devanagari/devanagari-400.css';
+
+/* Metric-adjusted fallbacks: no layout shift while the web font loads. */
+@font-face {
+  font-family: 'Plex Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Liberation Sans'), local('Roboto');
+  size-adjust: 101.4%;
+  ascent-override: 101.1%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Plex Mono Fallback';
+  src: local('Courier New'), local('Liberation Mono'), local('Menlo'), local('Consolas');
+  size-adjust: 100%;
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+}

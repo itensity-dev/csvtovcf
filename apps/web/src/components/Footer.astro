@@ -1,0 +1,40 @@
+---
+import type { Lang } from '../i18n/config';
+import { dict } from '../i18n';
+import { allPages } from '../lib/routes';
+import { networkLinks, SOURCE_URL } from '../config/network';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = dict(lang);
+const pages = (await allPages()).filter((p) => p.lang === lang);
+const tools = pages.filter((p) => p.kind === 'tool');
+const guides = pages.filter((p) => p.kind === 'guide' || p.kind === 'article');
+const legal = pages.filter((p) => p.kind === 'legal');
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <section>
+      <h2>{d.footer.tools}</h2>
+      <ul>{tools.map((p) => <li><a href={p.path}>{p.entry.data.nav}</a></li>)}</ul>
+    </section>
+    <section>
+      <h2>{d.footer.guides}</h2>
+      <ul>{guides.map((p) => <li><a href={p.path}>{p.entry.data.nav}</a></li>)}</ul>
+    </section>
+    <section>
+      <h2>{d.footer.project}</h2>
+      <ul>
+        {legal.map((p) => <li><a href={p.path}>{p.entry.data.nav}</a></li>)}
+        <li><a href={SOURCE_URL} rel="noopener">{d.footer.source}</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>{d.footer.network}</h2>
+      <ul>{networkLinks().map((n) => <li><a href={n.href} rel="noopener">{n.domain}</a></li>)}</ul>
+    </section>
+    <p class="footer-note">{d.footer.note}</p>
+  </div>
+</footer>

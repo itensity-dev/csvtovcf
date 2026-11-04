@@ -1,0 +1,128 @@
+/*
+ * csvtovcf design tokens — "card catalog drawer".
+ * Light: manila folder, card stock, black ink, red headline rule, blue ruled lines, blue for actions.
+ * Dark: the same drawer at night.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* colour */
+  --paper: #ede3c8;
+  --paper-2: #e2d5b2;
+  --card: #fffdf6;
+  --card-2: #f7f2e4;
+  --ink: #1d1c1a;
+  --ink-2: #4f4a42;
+  --ink-3: #5f584d;
+  --hairline: #b9ad92;
+  --rule: #b8352a;
+  --rule-soft: #f3d9d4;
+  --line-blue: #a8c2dd;
+  --action: #1e4fa8;
+  --action-hover: #163d84;
+  --action-ink: #ffffff;
+  --action-soft: #dfe7f5;
+  --focus: #1e4fa8;
+  --selection: #c9d8f0;
+
+  /* type */
+  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans Arabic', 'Noto Sans Devanagari', 'Plex Fallback', 'Hiragino Sans',
+    'PingFang SC', 'Yu Gothic', 'Microsoft YaHei', 'Malgun Gothic', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', 'Noto Sans Devanagari', 'Plex Mono Fallback', 'Hiragino Sans',
+    'PingFang SC', 'Microsoft YaHei', 'Malgun Gothic', monospace;
+  --fs-0: 0.8rem;
+  --fs-1: 0.875rem;
+  --fs-2: 1rem;
+  --fs-3: 1.25rem;
+  --fs-4: 1.5625rem;
+  --fs-5: 1.953rem;
+  --fs-6: 2.441rem;
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-body: 1.55;
+  --track-label: 0.06em;
+
+  /* space (4 px steps) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+
+  /* shape and lines */
+  --r-0: 0;
+  --r-card: 2px;
+  --bw-hair: 1px;
+  --bw-rule: 2px;
+  --bw-heavy: 3px;
+
+  /* layout */
+  --page-max: 76rem;
+  --gutter: clamp(1rem, 3vw, 2rem);
+
+  /* motion */
+  --t-fast: 120ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #191712;
+    --paper-2: #221f18;
+    --card: #24211b;
+    --card-2: #2c2820;
+    --ink: #eee7d6;
+    --ink-2: #cfc6b2;
+    --ink-3: #ada38e;
+    --hairline: #4d4636;
+    --rule: #e2766a;
+    --rule-soft: #3a2420;
+    --line-blue: #34506f;
+    --action: #8fb1f0;
+    --action-hover: #b3caf5;
+    --action-ink: #10151f;
+    --action-soft: #1d2a42;
+    --focus: #8fb1f0;
+    --selection: #2c4470;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #191712;
+  --paper-2: #221f18;
+  --card: #24211b;
+  --card-2: #2c2820;
+  --ink: #eee7d6;
+  --ink-2: #cfc6b2;
+  --ink-3: #ada38e;
+  --hairline: #4d4636;
+  --rule: #e2766a;
+  --rule-soft: #3a2420;
+  --line-blue: #34506f;
+  --action: #8fb1f0;
+  --action-hover: #b3caf5;
+  --action-ink: #10151f;
+  --action-soft: #1d2a42;
+  --focus: #8fb1f0;
+  --selection: #2c4470;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,142 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ToolIsland from '../components/page/ToolIsland.astro';
+import '../styles/tool.css';
+import { allPages, alternates as altsOf, pageRef, type PageRef } from '../lib/routes';
+import { jsonLd, ogPath } from '../lib/seo';
+import { dict, fmt, formatDate } from '../i18n';
+import { ADS_ENABLED } from '../config/env';
+import type { PageId } from '../i18n/pages';
+import { md } from '../lib/inline-md';
+
+export async function getStaticPaths() {
+  const pages = await allPages();
+  return pages.map((p) => ({ params: { path: p.path === '/' ? undefined : p.path.replace(/^\/|\/$/g, '') }, props: { ref: p } }));
+}
+
+const { ref } = Astro.props as { ref: PageRef };
+const { lang, id, kind, entry } = ref;
+const data = entry.data;
+const d = dict(lang);
+const { Content } = await render(entry);
+const alts = (await altsOf(id)).map((a) => ({ lang: a.lang, path: a.path }));
+const home = await pageRef(lang, 'home');
+const related = (
+  await Promise.all(
+    (data.related.length ? data.related : ['home', 'excel-to-vcf', 'import-iphone', 'import-android']).filter((r) => r !== id).map((r) => pageRef(lang, r as PageId)),
+  )
+).filter((x): x is PageRef => !!x);
+const updated = formatDate(data.updated, lang);
+---
+<Base
+  lang={lang}
+  title={data.title}
+  description={data.description}
+  path={ref.path}
+  alternates={alts}
+  jsonld={jsonLd(ref, home)}
+  ogImage={ogPath(ref)}
+  mdPath={ref.mdPath}
+  pageId={id}
+>
+  <div class="wrap">
+    <header class="page-head">
+      {
+        id !== 'home' && home && (
+          <ol class="breadcrumbs">
+            <li><a href={home.path}>{d.page.breadcrumbHome}</a></li>
+            <li aria-current="page">{data.nav}</li>
+          </ol>
+        )
+      }
+      <h1>{data.h1}</h1>
+      <p class="lead">{data.lead}</p>
+    </header>
+
+    {kind === 'tool' && <ToolIsland lang={lang} pageId={id} />}
+
+    {
+      data.steps.length > 0 && (
+        <section class="section cols" aria-labelledby="howto">
+          <h2 id="howto">{kind === 'tool' ? d.page.howTo : d.page.steps}</h2>
+          <ol class="steps">
+            {data.steps.map((s) => (
+              <li><span set:html={md(s)} /></li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      data.features.length > 0 && (
+        <section class="section cols" aria-labelledby="features">
+          <h2 id="features">{d.page.features}</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">{d.page.feature}</th>
+                  <th scope="col">{d.page.value}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.features.map((f) => (
+                  <tr>
+                    <th scope="row">{f.feature}</th>
+                    <td set:html={md(f.value)} />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )
+    }
+
+    {ADS_ENABLED && kind !== 'legal' && <aside class="ad-slot" aria-label="Advertisement" data-ad-slot="1" />}
+
+    <section class={'section' + (kind === 'tool' ? ' cols' : '')} aria-labelledby={kind === 'tool' ? 'format' : undefined}>
+      {kind === 'tool' && <h2 id="format">{d.page.format}</h2>}
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    {
+      data.faq.length > 0 && (
+        <section class="section cols" aria-labelledby="faq">
+          <h2 id="faq">{d.page.faq}</h2>
+          <div class="faq">
+            {data.faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <div class="answer" set:html={md(f.a)} />
+              </details>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      kind !== 'legal' && related.length > 0 && (
+        <section class="section" aria-labelledby="related">
+          <h2 id="related">{d.page.related}</h2>
+          <ul class="related">
+            {related.map((r) => (
+              <li>
+                <a href={r.path}>
+                  <span class="t">{r.entry.data.nav}</span>
+                  <span class="d">{r.entry.data.summary}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+    <p class="updated"><time datetime={data.updated.toISOString().slice(0, 10)}>{fmt(d.page.updated, { date: updated })}</time></p>
+  </div>
+</Base>

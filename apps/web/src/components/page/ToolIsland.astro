@@ -1,0 +1,46 @@
+---
+import Tool from '../../tool/Tool';
+import { Engine, DEFAULT_OPTIONS, ENCODINGS } from '../../tool/engine';
+import { demoTable } from '../../tool/demos';
+import { getCountries, getCountryCallingCode } from 'csvtovcf';
+import { LANG_META, coreLocale, type Lang } from '../../i18n/config';
+import { dict } from '../../i18n';
+import type { PageId } from '../../i18n/pages';
+
+interface Props {
+  lang: Lang;
+  pageId: PageId;
+}
+const { lang, pageId } = Astro.props;
+const d = dict(lang);
+const locale = coreLocale(lang);
+const demo = demoTable(pageId, lang);
+const engine = new Engine(locale);
+engine.addTable(demo.name, demo.rows, 'demo');
+const options = { ...DEFAULT_OPTIONS, country: LANG_META[lang].country };
+const summary = engine.convert(options);
+const files = engine.meta();
+const countries = getCountries().map((c) => [c, getCountryCallingCode(c)] as [string, string]);
+const accept =
+  pageId === 'xls-to-vcf'
+    ? '.xls,.xlsx,.ods,.csv,.tsv,.txt'
+    : pageId.includes('excel') || pageId === 'xlsx-to-vcf'
+      ? '.xlsx,.xls,.ods,.csv,.tsv,.txt'
+      : '.csv,.tsv,.txt,.xlsx,.xls,.ods,text/csv';
+---
+<Tool
+  client:load
+  lang={lang}
+  intl={LANG_META[lang].intl}
+  coreLocale={locale}
+  strings={{ tool: d.tool, fields: d.fields, fieldGroups: d.fieldGroups }}
+  countries={countries}
+  encodings={ENCODINGS}
+  initialFiles={files}
+  initialSummary={summary}
+  initialOptions={options}
+  demoRows={demo.rows}
+  demoName={demo.name}
+  pasteFirst={pageId === 'google-sheets-to-vcf'}
+  accept={accept}
+/>
