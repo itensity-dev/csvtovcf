@@ -298,5 +298,13 @@
     "org": "Work",
     "date": "Dates",
     "other": "Other"
+  },
+  "licenses": {
+    "browser": "Runs in your browser",
+    "fonts": "Fonts",
+    "build": "Used to build and test the site (not sent to your browser)",
+    "name": "Package",
+    "version": "Version",
+    "license": "License"
   }
 }

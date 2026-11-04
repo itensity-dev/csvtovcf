@@ -2,7 +2,7 @@
 url: import-vcf-to-iphone
 title: 'How to Import a VCF File to iPhone (All Contacts at Once)'
 h1: How to import a VCF file to iPhone
-description: 'Add every contact from a .vcf file to your iPhone at once: via AirDrop, Mail or Files on the phone, or via iCloud.com on a computer. Steps for iOS 26, with common problems.'
+description: 'Add every contact from a .vcf file to your iPhone at once: via AirDrop, Mail or Files on the phone, or iCloud.com on a computer. Steps for iOS 26 and common fixes.'
 lead: 'Two ways that import a whole .vcf with many contacts: open the file on the iPhone and tap “Add All Contacts”, or import it on iCloud.com and let it sync.'
 nav: Import to iPhone
 summary: 'Get all contacts from one .vcf onto an iPhone: on the phone or via iCloud.com.'

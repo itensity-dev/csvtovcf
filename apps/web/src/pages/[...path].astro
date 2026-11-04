@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ToolIsland from '../components/page/ToolIsland.astro';
+import Licenses from '../components/page/Licenses.astro';
 import '../styles/tool.css';
 import { allPages, alternates as altsOf, pageRef, type PageRef } from '../lib/routes';
 import { jsonLd, ogPath } from '../lib/seo';
@@ -102,6 +103,7 @@ const updated = formatDate(data.updated, lang);
       <div class="prose">
         <Content />
       </div>
+      {id === 'licenses' && <Licenses lang={lang} />}
     </section>
 
     {

@@ -2,7 +2,7 @@
 url: xlsx-to-vcf
 title: 'XLSX to VCF Converter: Excel Workbook Contacts to vCard'
 h1: XLSX to VCF converter
-description: 'Convert an .xlsx contact sheet to a VCF (vCard) file. Choose the sheet, keep full phone numbers and date cells, download one .vcf for iPhone, Android or Google. No upload.'
+description: 'Convert an .xlsx contact sheet to a VCF (vCard) file. Choose the sheet, keep full phone numbers and dates, get one .vcf for iPhone, Android or Google. No upload.'
 lead: 'Pick a sheet from your .xlsx workbook and get a .vcf with one card per row. Phone numbers are read in full and date cells become birthdays.'
 nav: XLSX to VCF
 summary: 'Modern Excel workbooks (.xlsx) to vCard, with sheet choice.'

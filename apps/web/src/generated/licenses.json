@@ -1,0 +1,128 @@
+{
+  "browser": [
+    {
+      "name": "@preact/signals",
+      "version": "2.11.4",
+      "license": "MIT",
+      "url": "https://preactjs.com"
+    },
+    {
+      "name": "chardet",
+      "version": "2.2.0",
+      "license": "MIT",
+      "url": "https://github.com/runk/node-chardet"
+    },
+    {
+      "name": "fflate",
+      "version": "0.8.3",
+      "license": "MIT",
+      "url": "https://101arrowz.github.io/fflate"
+    },
+    {
+      "name": "libphonenumber-js",
+      "version": "1.13.15",
+      "license": "MIT",
+      "url": "https://gitlab.com/catamphetamine/libphonenumber-js#readme"
+    },
+    {
+      "name": "papaparse",
+      "version": "5.7.0",
+      "license": "MIT",
+      "url": "https://www.papaparse.com/"
+    },
+    {
+      "name": "preact",
+      "version": "11.1.1",
+      "license": "MIT",
+      "url": "https://preactjs.com"
+    },
+    {
+      "name": "SheetJS Community Edition (xlsx)",
+      "version": "0.20.3",
+      "license": "Apache-2.0",
+      "url": "https://sheetjs.com/"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "IBM Plex Mono (IBM, Bold Monday)",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "url": "https://fontsource.org/fonts/ibm-plex-mono"
+    },
+    {
+      "name": "IBM Plex Sans (IBM, Bold Monday)",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "url": "https://fontsource.org/fonts/ibm-plex-sans"
+    },
+    {
+      "name": "IBM Plex Sans Arabic (IBM, Bold Monday)",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "url": "https://fontsource.org/fonts/ibm-plex-sans-arabic"
+    },
+    {
+      "name": "Noto Sans Devanagari (Google)",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "url": "https://fontsource.org/fonts/noto-sans-devanagari"
+    }
+  ],
+  "build": [
+    {
+      "name": "@astrojs/check",
+      "version": "0.9.12",
+      "license": "MIT",
+      "url": "https://github.com/withastro/astro/tree/main/packages/language-tools/astro-check"
+    },
+    {
+      "name": "@astrojs/preact",
+      "version": "6.1.1",
+      "license": "MIT",
+      "url": "https://docs.astro.build/en/guides/integrations-guide/preact/"
+    },
+    {
+      "name": "@playwright/test",
+      "version": "1.63.0",
+      "license": "Apache-2.0",
+      "url": "https://playwright.dev"
+    },
+    {
+      "name": "@resvg/resvg-js",
+      "version": "2.6.2",
+      "license": "MPL-2.0",
+      "url": "git@github.com:yisibl/resvg-js"
+    },
+    {
+      "name": "astro",
+      "version": "7.4.5",
+      "license": "MIT",
+      "url": "https://astro.build"
+    },
+    {
+      "name": "ical.js",
+      "version": "2.2.1",
+      "license": "MPL-2.0",
+      "url": "https://github.com/kewisch/ical.js"
+    },
+    {
+      "name": "satori",
+      "version": "0.63.2",
+      "license": "MPL-2.0",
+      "url": "https://github.com/vercel/satori#readme"
+    },
+    {
+      "name": "typescript",
+      "version": "6.0.3",
+      "license": "Apache-2.0",
+      "url": "https://www.typescriptlang.org/"
+    },
+    {
+      "name": "vitest",
+      "version": "5.1.0",
+      "license": "MIT",
+      "url": "https://vitest.dev"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 url: xls-to-vcf
 title: 'XLS to VCF Converter: Old Excel Contact Files to vCard'
 h1: XLS to VCF converter
-description: 'Convert .xls contact lists from Excel 97–2003, old CRMs and phone software to a VCF file. Legacy code pages are decoded, so names keep their letters. Runs in your browser.'
+description: 'Convert .xls contact lists from Excel 97–2003, old CRMs and phone software to a VCF file. Legacy code pages are decoded, so names keep their letters. No upload.'
 lead: 'Reads the old binary Excel format (.xls) — including files from Excel 95, accounting programs and phone-sync software — and writes a .vcf that current phones import.'
 nav: XLS to VCF
 summary: 'Legacy .xls contact files (Excel 97–2003 and older) to vCard.'

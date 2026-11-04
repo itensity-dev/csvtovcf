@@ -27,7 +27,7 @@ features:
 faq:
   - q: Google Contacts can export vCard itself. Why convert the CSV?
     a: 'If you still have the Google account, Export → vCard is the simplest route. Use this page when you only have the CSV — sent by someone else, exported years ago, or edited in Excel — or when you want to clean numbers and merge duplicates first.'
-  - q: What does ` ::: ` mean in my CSV?
+  - q: 'What does ` ::: ` mean in my CSV?'
     a: 'Google packs several values of the same kind into one cell and separates them with ` ::: `. For example, two mobile numbers: `+1 202-555-0143 ::: +1 202-555-0187`. They become two separate phone lines on the card.'
   - q: Will the groups (labels) be kept?
     a: 'Yes, as `CATEGORIES`. iPhone does not show categories, but Google Contacts, Outlook and most Android apps do.'
