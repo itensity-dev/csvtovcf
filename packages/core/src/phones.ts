@@ -1,6 +1,6 @@
 import type { CountryCode, PhoneNumber } from 'libphonenumber-js/max';
 import { getCountryCallingCode, parsePhoneNumberFromString } from 'libphonenumber-js/max';
-import type { PhoneIssue, PhoneMode, PhoneType } from './types';
+import type { PhoneIssue, PhoneMode, PhoneType } from './types.js';
 
 export type { CountryCode };
 

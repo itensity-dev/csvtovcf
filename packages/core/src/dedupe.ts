@@ -1,5 +1,5 @@
-import type { Contact } from './types';
-import { phoneKey } from './phones';
+import type { Contact } from './types.js';
+import { phoneKey } from './phones.js';
 
 export interface DuplicateGroup {
   /** Indexes into the contacts array; the first one is kept as the base of the merge. */

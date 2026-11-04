@@ -1,0 +1,26 @@
+name: IndexNow
+
+# Run after a deploy: tells Bing, Yandex, Seznam, Naver and others which URLs changed.
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'Submit URLs with lastmod on or after this date (YYYY-MM-DD); empty = today'
+        required: false
+      all:
+        description: 'Submit every URL'
+        type: boolean
+        default: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node apps/web/scripts/indexnow.mjs ${{ inputs.all && '--all' || '' }} ${{ inputs.since && format('--since {0}', inputs.since) || '' }}
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://csvtovcf.com' }}
+          INDEXNOW_KEY: ${{ vars.INDEXNOW_KEY }}

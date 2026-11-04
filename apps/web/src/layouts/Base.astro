@@ -16,6 +16,8 @@ import {
   PLAUSIBLE_SRC,
   GSC_VERIFICATION,
   BING_VERIFICATION,
+  ADS_ENABLED,
+  ADSENSE_CLIENT,
 } from '../config/env';
 
 export interface Alternate {
@@ -82,6 +84,13 @@ const bannerData = JSON.stringify(
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
       } catch (e) {}
     </script>
+    {
+      /* Ads are off by default. Google's certified CMP (EEA/UK/CH) is configured in AdSense → Privacy & messaging
+         and is served by this same script. Ads never load inside the converter, and contact data lives in a Worker. */
+      ADS_ENABLED && ADSENSE_CLIENT && (
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossorigin="anonymous" />
+      )
+    }
     {
       ANALYTICS_PROVIDER === 'plausible' && (
         <script defer data-domain={PLAUSIBLE_DOMAIN} src={PLAUSIBLE_SRC} />

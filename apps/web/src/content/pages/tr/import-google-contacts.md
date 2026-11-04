@@ -3,7 +3,7 @@ url: google-kisiler-vcf-ice-aktarma
 title: "VCF veya CSV Dosyasını Google Kişiler'e Aktarma"
 h1: "Kişiler Google Kişiler'e nasıl aktarılır"
 description: ".vcf (veya Google CSV) dosyasını web'de Google Kişiler'e aktarın: İçe aktar → Dosya seç. Sınırlar (dosya başına 3.000, hesap başına 25.000), etiketler ve yinelenenler."
-lead: "Web'deki Google Kişiler bir .vcf veya Google CSV dosyasını birkaç tıklamayla içe aktarır. Kişiler sonra her Android telefona, Gmail'e ve Google hesabı ekli bir iPhone'a eşitlenir."
+lead: "Web'deki Google Kişiler bir .vcf veya Google CSV dosyasını dört adımda içe aktarır. Kişiler sonra her Android telefona, Gmail'e ve Google hesabı ekli bir iPhone'a eşitlenir."
 nav: "Google Kişiler'e aktarma"
 summary: "contacts.google.com'da .vcf veya CSV içe aktarma ve sınırları."
 steps:

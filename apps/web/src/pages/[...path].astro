@@ -7,7 +7,7 @@ import '../styles/tool.css';
 import { allPages, alternates as altsOf, pageRef, type PageRef } from '../lib/routes';
 import { jsonLd, ogPath } from '../lib/seo';
 import { dict, fmt, formatDate } from '../i18n';
-import { ADS_ENABLED } from '../config/env';
+import { ADS_ENABLED, ADSENSE_CLIENT, ADSENSE_SLOT } from '../config/env';
 import type { PageId } from '../i18n/pages';
 import { md } from '../lib/inline-md';
 
@@ -96,7 +96,13 @@ const updated = formatDate(data.updated, lang);
       )
     }
 
-    {ADS_ENABLED && kind !== 'legal' && <aside class="ad-slot" aria-label="Advertisement" data-ad-slot="1" />}
+    {
+      ADS_ENABLED && kind !== 'legal' && (
+        <aside class="ad-slot" aria-label="Advertisement">
+          <ins class="adsbygoogle ad-unit" data-ad-client={ADSENSE_CLIENT} data-ad-slot={ADSENSE_SLOT || undefined} data-ad-format="auto" data-full-width-responsive="true" />
+        </aside>
+      )
+    }
 
     <section class={'section' + (kind === 'tool' ? ' cols' : '')} aria-labelledby={kind === 'tool' ? 'format' : undefined}>
       {kind === 'tool' && <h2 id="format">{d.page.format}</h2>}

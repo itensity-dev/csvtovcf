@@ -7,6 +7,8 @@ export const PLAUSIBLE_DOMAIN = env('PLAUSIBLE_DOMAIN', 'csvtovcf.com');
 export const PLAUSIBLE_SRC = env('PLAUSIBLE_SRC', 'https://plausible.io/js/script.js');
 export const ADS_ENABLED = env('ADS_ENABLED', 'false') === 'true';
 export const ADSENSE_CLIENT = env('ADSENSE_CLIENT');
+/** Optional ad unit id for the reserved slots; without it AdSense Auto ads decide placement. */
+export const ADSENSE_SLOT = env('ADSENSE_SLOT');
 export const GSC_VERIFICATION = env('GSC_VERIFICATION');
 export const BING_VERIFICATION = env('BING_VERIFICATION');
 export const INDEXNOW_KEY = env('INDEXNOW_KEY');

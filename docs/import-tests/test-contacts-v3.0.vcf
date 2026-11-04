@@ -1,0 +1,79 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Test-Lee;Ann;B.;Dr.;Jr.
+FN:Dr. Ann B. Test-Lee Jr.
+NICKNAME:Annie
+ORG:Example & Co;R&D
+TITLE:Engineer
+TEL;TYPE=CELL;TYPE=PREF:+12025550143
+TEL;TYPE=WORK,VOICE:+12025550110
+TEL;TYPE=HOME,FAX:+12025550111
+item1.TEL;TYPE=VOICE:+447911123456
+item1.X-ABLabel:WhatsApp
+EMAIL;TYPE=INTERNET,WORK,PREF:ann.test@example.com
+EMAIL;TYPE=INTERNET,HOME:ann.home@example.org
+ADR;TYPE=WORK:;Suite 4\, Floor 2;500 Market St;San Francisco;CA;94105;Unite
+ d States
+URL:https://example.com/ann
+BDAY:1990-05-17
+item2.X-ABDATE:2015-06-12
+item2.X-ABLabel:_$!<Anniversary>!$_
+NOTE:Line one\; with a semicolon\, a comma and a backslash \\\nLine two —
+  long enough to be folded at 75 octets in every vCard version: 🎉
+ 👩‍👩‍👧‍👦
+CATEGORIES:Test,Clients\, VIP
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Петров;Иван;Сергеевич;;
+FN:Петров Иван Сергеевич
+TEL;TYPE=CELL:+79991234567
+BDAY:--03-08
+NOTE:Кириллица в заметке\, длинная строка д
+ ля проверки переноса по октетам UTF-8 без р
+ азрыва букв.
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:أحمد;محمد;;;
+FN:محمد أحمد
+TEL;TYPE=CELL:+966501234567
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:山田;太郎;;;
+FN:山田 太郎
+X-PHONETIC-FIRST-NAME:たろう
+X-PHONETIC-LAST-NAME:やまだ
+TEL;TYPE=CELL:+819012345678
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Yılmaz;Ayşe;;;
+FN:Ayşe Yılmaz
+TEL;TYPE=CELL:+905321234567
+ADR;TYPE=HOME:;;Bağdat Cd. 1\nDaire 3;İstanbul;;34728;Türkiye
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:;;;;
+FN:Company Only Ltd
+ORG:Company Only Ltd
+TEL;TYPE=WORK,VOICE:+4930123456
+EMAIL;TYPE=INTERNET,WORK:office@example.de
+X-ABShowAs:COMPANY
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Ölmann-Ñúñez;Zoë;;;
+FN:Zoë Ölmann-Ñúñez
+TEL;TYPE=CELL:12345
+NOTE:Invalid number kept as typed
+END:VCARD

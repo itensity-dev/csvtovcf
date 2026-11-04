@@ -11,6 +11,7 @@ services:
         PLAUSIBLE_SRC: ${PLAUSIBLE_SRC:-https://plausible.io/js/script.js}
         ADS_ENABLED: ${ADS_ENABLED:-false}
         ADSENSE_CLIENT: ${ADSENSE_CLIENT:-}
+        ADSENSE_SLOT: ${ADSENSE_SLOT:-}
         GSC_VERIFICATION: ${GSC_VERIFICATION:-}
         BING_VERIFICATION: ${BING_VERIFICATION:-}
         INDEXNOW_KEY: ${INDEXNOW_KEY:-}

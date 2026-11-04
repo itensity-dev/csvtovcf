@@ -1,0 +1,133 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SITE_URL: ${{ vars.SITE_URL || 'https://csvtovcf.com' }}
+
+jobs:
+  test:
+    name: lint · typecheck · unit · build · e2e · lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Unit tests (core)
+        run: pnpm --filter csvtovcf test
+      - name: i18n completeness
+        run: pnpm --filter @csvtovcf/web i18n:check
+      - name: Colour contrast of design tokens
+        run: node apps/web/scripts/contrast.mjs
+      - name: Build core package (npm)
+        run: pnpm --filter csvtovcf build
+      - name: Build site
+        run: pnpm --filter @csvtovcf/web build
+
+      - name: Playwright browsers
+        run: pnpm --filter @csvtovcf/web exec playwright install --with-deps chromium
+      - name: End-to-end, SEO and accessibility tests
+        run: pnpm --filter @csvtovcf/web test:e2e
+      - name: Lighthouse CI (mobile, ≥ 95 in every category)
+        run: pnpm --filter @csvtovcf/web exec lhci autorun --config=lighthouserc.cjs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: |
+            apps/web/playwright-report
+            apps/web/.lighthouseci
+          retention-days: 14
+
+  docker:
+    name: docker image → GHCR
+    needs: test
+    # images are published from main and version tags only
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Version from package.json
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=long
+            type=sha
+            type=semver,pattern={{version}}
+            type=raw,value=${{ steps.pkg.outputs.version }}
+            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            VERSION=${{ steps.pkg.outputs.version }}
+            REVISION=${{ github.sha }}
+            SITE_URL=${{ env.SITE_URL }}
+            ANALYTICS_PROVIDER=${{ vars.ANALYTICS_PROVIDER || 'none' }}
+            PLAUSIBLE_DOMAIN=${{ vars.PLAUSIBLE_DOMAIN || 'csvtovcf.com' }}
+            ADS_ENABLED=${{ vars.ADS_ENABLED || 'false' }}
+            ADSENSE_CLIENT=${{ vars.ADSENSE_CLIENT }}
+            ADSENSE_SLOT=${{ vars.ADSENSE_SLOT }}
+            GSC_VERIFICATION=${{ vars.GSC_VERIFICATION }}
+            BING_VERIFICATION=${{ vars.BING_VERIFICATION }}
+            INDEXNOW_KEY=${{ vars.INDEXNOW_KEY }}
+      - name: Image size ≤ 60 MB and healthcheck
+        run: |
+          IMG=ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
+          SIZE=$(docker image inspect "$IMG" --format '{{.Size}}')
+          echo "image size: $((SIZE / 1024 / 1024)) MB"
+          test "$SIZE" -le $((60 * 1024 * 1024))
+          docker run -d --name smoke -p 8080:8080 --read-only --tmpfs /config --tmpfs /data "$IMG"
+          for i in $(seq 1 20); do
+            [ "$(docker inspect -f '{{.State.Health.Status}}' smoke)" = healthy ] && break
+            sleep 2
+          done
+          docker inspect -f '{{.State.Health.Status}}' smoke | grep -q healthy
+          curl -fsS http://localhost:8080/ | grep -q '<h1'
+          curl -fsSI -H 'Accept-Encoding: br' http://localhost:8080/ | grep -qi 'content-encoding: br'
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push
+        run: |
+          echo "${{ steps.meta.outputs.tags }}" | while read -r tag; do [ -n "$tag" ] && docker push "$tag"; done

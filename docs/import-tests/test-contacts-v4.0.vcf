@@ -1,0 +1,77 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Test-Lee;Ann;B.;Dr.;Jr.
+FN:Dr. Ann B. Test-Lee Jr.
+NICKNAME:Annie
+ORG:Example & Co;R&D
+TITLE:Engineer
+TEL;VALUE=uri;TYPE=cell;PREF=1:tel:+12025550143
+TEL;VALUE=uri;TYPE=work,voice:tel:+12025550110
+TEL;VALUE=uri;TYPE=home,fax:tel:+12025550111
+TEL;VALUE=uri;TYPE=voice:tel:+447911123456
+EMAIL;TYPE=work;PREF=1:ann.test@example.com
+EMAIL;TYPE=home:ann.home@example.org
+ADR;TYPE=work:;Suite 4\, Floor 2;500 Market St;San Francisco;CA;94105;Unite
+ d States
+URL;TYPE=work:https://example.com/ann
+BDAY:19900517
+ANNIVERSARY:20150612
+NOTE:Line one; with a semicolon\, a comma and a backslash \\\nLine two — 
+ long enough to be folded at 75 octets in every vCard version: 🎉
+ 👩‍👩‍👧‍👦
+CATEGORIES:Test,Clients\, VIP
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Петров;Иван;Сергеевич;;
+FN:Петров Иван Сергеевич
+TEL;VALUE=uri;TYPE=cell:tel:+79991234567
+BDAY:--0308
+NOTE:Кириллица в заметке\, длинная строка д
+ ля проверки переноса по октетам UTF-8 без р
+ азрыва букв.
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:أحمد;محمد;;;
+FN:محمد أحمد
+TEL;VALUE=uri;TYPE=cell:tel:+966501234567
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:山田;太郎;;;
+FN:山田 太郎
+X-PHONETIC-FIRST-NAME:たろう
+X-PHONETIC-LAST-NAME:やまだ
+TEL;VALUE=uri;TYPE=cell:tel:+819012345678
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Yılmaz;Ayşe;;;
+FN:Ayşe Yılmaz
+TEL;VALUE=uri;TYPE=cell:tel:+905321234567
+ADR;TYPE=home:;;Bağdat Cd. 1\nDaire 3;İstanbul;;34728;Türkiye
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+KIND:org
+N:;;;;
+FN:Company Only Ltd
+ORG:Company Only Ltd
+TEL;VALUE=uri;TYPE=work,voice:tel:+4930123456
+EMAIL;TYPE=work:office@example.de
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Ölmann-Ñúñez;Zoë;;;
+FN:Zoë Ölmann-Ñúñez
+TEL;TYPE=cell:12345
+NOTE:Invalid number kept as typed
+END:VCARD

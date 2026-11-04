@@ -2,18 +2,18 @@
  * csvtovcf — contact spreadsheets → vCard.
  * https://csvtovcf.com · MIT License
  */
-export * from './types';
-export * from './fields';
-export * from './text';
-export * from './encoding';
-export * from './csv';
-export * from './table';
-export * from './names';
-export * from './phones';
-export * from './countries';
-export * from './dates';
-export * from './mapping';
-export * from './convert';
-export * from './dedupe';
-export * from './vcard';
-export * from './export-csv';
+export * from './types.js';
+export * from './fields.js';
+export * from './text.js';
+export * from './encoding.js';
+export * from './csv.js';
+export * from './table.js';
+export * from './names.js';
+export * from './phones.js';
+export * from './countries.js';
+export * from './dates.js';
+export * from './mapping.js';
+export * from './convert.js';
+export * from './dedupe.js';
+export * from './vcard.js';
+export * from './export-csv.js';

@@ -214,8 +214,13 @@ samp,
   cursor: pointer;
   min-inline-size: 2.25rem;
 }
+/* fixed at the bottom: appears after load without shifting the page (CLS) */
 .lang-banner {
-  border-block-end: var(--bw-hair) solid var(--hairline);
+  position: fixed;
+  z-index: 30;
+  inset-inline: 0;
+  inset-block-end: 0;
+  border-block-start: var(--bw-rule) solid var(--ink);
   background: var(--card);
   font-size: var(--fs-1);
 }
@@ -360,6 +365,8 @@ main {
 }
 .steps li::before {
   content: counter(step);
+  block-size: 1.6rem;
+  overflow: hidden;
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: var(--fs-3);
@@ -669,4 +676,10 @@ td.no::before {
 }
 .lang-link {
   margin-inline-end: var(--s-4);
+}
+
+.ad-unit {
+  display: block;
+  inline-size: 100%;
+  min-block-size: 280px;
 }

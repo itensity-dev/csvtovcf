@@ -1,6 +1,6 @@
-import type { Address, Contact, PartialDate, Phone, PhoneType, VCardVersion } from './types';
-import { formatPartialDate } from './dates';
-import { joinName } from './names';
+import type { Address, Contact, PartialDate, Phone, PhoneType, VCardVersion } from './types.js';
+import { formatPartialDate } from './dates.js';
+import { joinName } from './names.js';
 
 export interface BuildOptions {
   version: VCardVersion;

@@ -1,0 +1,17 @@
+﻿First Name,Middle Name,Last Name,Phonetic First Name,Phonetic Middle Name,Phonetic Last Name,Name Prefix,Name Suffix,Nickname,File As,Organization Name,Organization Title,Organization Department,Birthday,Notes,Photo,Labels,E-mail 1 - Label,E-mail 1 - Value,E-mail 2 - Label,E-mail 2 - Value,Phone 1 - Label,Phone 1 - Value,Phone 2 - Label,Phone 2 - Value,Phone 3 - Label,Phone 3 - Value,Phone 4 - Label,Phone 4 - Value,Address 1 - Label,Address 1 - Formatted,Address 1 - Street,Address 1 - City,Address 1 - PO Box,Address 1 - Region,Address 1 - Postal Code,Address 1 - Country,Address 1 - Extended Address,Website 1 - Label,Website 1 - Value,Event 1 - Label,Event 1 - Value
+Ann,B.,Test-Lee,,,,Dr.,Jr.,Annie,,Example & Co,Engineer,R&D,1990-05-17,"Line one; with a semicolon, a comma and a backslash \
+Line two — long enough to be folded at 75 octets in every vCard version: 🎉👩‍👩‍👧‍👦",,"Test ::: Clients, VIP",Work,ann.test@example.com,Home,ann.home@example.org,Mobile,+12025550143,Work,+12025550110,Home Fax,+12025550111,WhatsApp,+447911123456,Work,"500 Market St
+Suite 4, Floor 2
+94105 San Francisco
+CA
+United States",500 Market St,San Francisco,,CA,94105,United States,"Suite 4, Floor 2",Work,https://example.com/ann,Anniversary,2015-06-12
+Иван,Сергеевич,Петров,,,,,,,,,,,--03-08,"Кириллица в заметке, длинная строка для проверки переноса по октетам UTF-8 без разрыва букв.",,,,,,,Mobile,+79991234567,,,,,,,,,,,,,,,,,,,
+محمد,,أحمد,,,,,,,,,,,,,,,,,,,Mobile,+966501234567,,,,,,,,,,,,,,,,,,,
+太郎,,山田,たろう,,やまだ,,,,,,,,,,,,,,,,Mobile,+819012345678,,,,,,,,,,,,,,,,,,,
+Ayşe,,Yılmaz,,,,,,,,,,,,,,,,,,,Mobile,+905321234567,,,,,,,Home,"Bağdat Cd. 1
+Daire 3
+34728 İstanbul
+Türkiye","Bağdat Cd. 1
+Daire 3",İstanbul,,,34728,Türkiye,,,,,
+,,,,,,,,,,Company Only Ltd,,,,,,,Work,office@example.de,,,Work,+4930123456,,,,,,,,,,,,,,,,,,,
+Zoë,,Ölmann-Ñúñez,,,,,,,,,,,,Invalid number kept as typed,,,,,,,Mobile,12345,,,,,,,,,,,,,,,,,,,

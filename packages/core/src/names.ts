@@ -1,4 +1,4 @@
-import { clean, isCjk } from './text';
+import { clean, isCjk } from './text.js';
 
 export interface NameParts {
   prefix: string;

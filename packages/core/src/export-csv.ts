@@ -1,5 +1,5 @@
-import type { Address, Contact, PartialDate, PhoneType } from './types';
-import { formatPartialDate } from './dates';
+import type { Address, Contact, PartialDate, PhoneType } from './types.js';
+import { formatPartialDate } from './dates.js';
 
 function csvCell(v: string): string {
   if (/[",\r\n]/.test(v) || /^\s|\s$/.test(v)) return `"${v.replace(/"/g, '""')}"`;

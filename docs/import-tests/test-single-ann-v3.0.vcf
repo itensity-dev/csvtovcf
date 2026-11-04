@@ -1,0 +1,26 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Test-Lee;Ann;B.;Dr.;Jr.
+FN:Dr. Ann B. Test-Lee Jr.
+NICKNAME:Annie
+ORG:Example & Co;R&D
+TITLE:Engineer
+TEL;TYPE=CELL;TYPE=PREF:+12025550143
+TEL;TYPE=WORK,VOICE:+12025550110
+TEL;TYPE=HOME,FAX:+12025550111
+item1.TEL;TYPE=VOICE:+447911123456
+item1.X-ABLabel:WhatsApp
+EMAIL;TYPE=INTERNET,WORK,PREF:ann.test@example.com
+EMAIL;TYPE=INTERNET,HOME:ann.home@example.org
+ADR;TYPE=WORK:;Suite 4\, Floor 2;500 Market St;San Francisco;CA;94105;Unite
+ d States
+URL:https://example.com/ann
+BDAY:1990-05-17
+item2.X-ABDATE:2015-06-12
+item2.X-ABLabel:_$!<Anniversary>!$_
+NOTE:Line one\; with a semicolon\, a comma and a backslash \\\nLine two —
+  long enough to be folded at 75 octets in every vCard version: 🎉
+ 👩‍👩‍👧‍👦
+CATEGORIES:Test,Clients\, VIP
+END:VCARD

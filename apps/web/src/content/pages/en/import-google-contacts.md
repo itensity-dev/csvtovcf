@@ -3,7 +3,7 @@ url: import-vcf-to-google-contacts
 title: 'How to Import a VCF or CSV File into Google Contacts'
 h1: How to import contacts into Google Contacts
 description: 'Import a .vcf (or Google CSV) into Google Contacts on the web: Import → Select file. Limits (3,000 per file, 25,000 per account), labels, and how to merge duplicates.'
-lead: 'Google Contacts on the web imports a .vcf or a Google CSV in a few clicks. Contacts then sync to every Android phone, to Gmail and to an iPhone with the Google account added.'
+lead: 'Google Contacts on the web imports a .vcf or a Google CSV in four steps. Contacts then sync to every Android phone, to Gmail and to an iPhone with the Google account added.'
 nav: Import to Google Contacts
 summary: 'Import a .vcf or CSV at contacts.google.com, with limits.'
 steps:

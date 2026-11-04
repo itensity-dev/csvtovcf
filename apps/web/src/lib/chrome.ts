@@ -71,6 +71,14 @@ export function initChrome(): void {
     });
   }
 
+  // ads: fill reserved slots (only rendered when ADS_ENABLED at build time)
+  const units = document.querySelectorAll('ins.adsbygoogle');
+  if (units.length) {
+    const w = window as unknown as { adsbygoogle?: unknown[] };
+    w.adsbygoogle = w.adsbygoogle || [];
+    units.forEach(() => w.adsbygoogle!.push({}));
+  }
+
   // analytics: only coarse, anonymous events (never names, numbers, headers)
   window.addEventListener('csvtovcf:converted', (e) => {
     const d = (e as CustomEvent<{ contacts: number; version: string; output: string; source: string }>).detail;

@@ -1,6 +1,6 @@
-import type { ColumnMapping, FieldKey } from './fields';
-import { looksLikeEmail, looksLikePhone, looksLikeUrl, normalizeHeader } from './text';
-import { parseDate } from './dates';
+import type { ColumnMapping, FieldKey } from './fields.js';
+import { looksLikeEmail, looksLikePhone, looksLikeUrl, normalizeHeader } from './text.js';
+import { parseDate } from './dates.js';
 
 // ───────────────────────────── Source detection ─────────────────────────────
 

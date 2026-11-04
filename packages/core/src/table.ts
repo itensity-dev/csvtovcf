@@ -1,4 +1,4 @@
-import { findHeaderRow } from './csv';
+import { findHeaderRow } from './csv.js';
 
 export interface LoadedTable {
   /** Header cells, or null when the first row is already data. */

@@ -1,5 +1,5 @@
-import type { PartialDate } from './types';
-import { stripDiacritics } from './text';
+import type { PartialDate } from './types.js';
+import { stripDiacritics } from './text.js';
 
 export type DateOrder = 'ymd' | 'dmy' | 'mdy';
 

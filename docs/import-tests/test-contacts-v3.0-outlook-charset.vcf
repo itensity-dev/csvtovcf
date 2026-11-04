@@ -1,0 +1,80 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:Test-Lee;Ann;B.;Dr.;Jr.
+FN:Dr. Ann B. Test-Lee Jr.
+NICKNAME:Annie
+ORG:Example & Co;R&D
+TITLE:Engineer
+TEL;TYPE=CELL;TYPE=PREF:+12025550143
+TEL;TYPE=WORK,VOICE:+12025550110
+TEL;TYPE=HOME,FAX:+12025550111
+item1.TEL;TYPE=VOICE:+447911123456
+item1.X-ABLabel:WhatsApp
+EMAIL;TYPE=INTERNET,WORK,PREF:ann.test@example.com
+EMAIL;TYPE=INTERNET,HOME:ann.home@example.org
+ADR;TYPE=WORK:;Suite 4\, Floor 2;500 Market St;San Francisco;CA;94105;Unite
+ d States
+URL:https://example.com/ann
+BDAY:1990-05-17
+item2.X-ABDATE:2015-06-12
+item2.X-ABLabel:_$!<Anniversary>!$_
+NOTE;CHARSET=UTF-8:Line one\; with a semicolon\, a comma and a backslash \\
+ \nLine two — long enough to be folded at 75 octets in every vCard versio
+ n: 🎉👩‍👩‍👧‍👦
+CATEGORIES:Test,Clients\, VIP
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N;CHARSET=UTF-8:Петров;Иван;Сергеевич;;
+FN;CHARSET=UTF-8:Петров Иван Сергеевич
+TEL;TYPE=CELL:+79991234567
+BDAY:--03-08
+NOTE;CHARSET=UTF-8:Кириллица в заметке\, длинная с
+ трока для проверки переноса по октетам UT
+ F-8 без разрыва букв.
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N;CHARSET=UTF-8:أحمد;محمد;;;
+FN;CHARSET=UTF-8:محمد أحمد
+TEL;TYPE=CELL:+966501234567
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N;CHARSET=UTF-8:山田;太郎;;;
+FN;CHARSET=UTF-8:山田 太郎
+X-PHONETIC-FIRST-NAME;CHARSET=UTF-8:たろう
+X-PHONETIC-LAST-NAME;CHARSET=UTF-8:やまだ
+TEL;TYPE=CELL:+819012345678
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N;CHARSET=UTF-8:Yılmaz;Ayşe;;;
+FN;CHARSET=UTF-8:Ayşe Yılmaz
+TEL;TYPE=CELL:+905321234567
+ADR;TYPE=HOME;CHARSET=UTF-8:;;Bağdat Cd. 1\nDaire 3;İstanbul;;34728;Türk
+ iye
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N:;;;;
+FN:Company Only Ltd
+ORG:Company Only Ltd
+TEL;TYPE=WORK,VOICE:+4930123456
+EMAIL;TYPE=INTERNET,WORK:office@example.de
+X-ABShowAs:COMPANY
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//csvtovcf.com//csvtovcf 1.0//EN
+N;CHARSET=UTF-8:Ölmann-Ñúñez;Zoë;;;
+FN;CHARSET=UTF-8:Zoë Ölmann-Ñúñez
+TEL;TYPE=CELL:12345
+NOTE:Invalid number kept as typed
+END:VCARD

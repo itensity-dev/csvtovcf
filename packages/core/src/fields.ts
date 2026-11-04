@@ -1,4 +1,4 @@
-import type { AddressType, EmailType, PhoneType, UrlType } from './types';
+import type { AddressType, EmailType, PhoneType, UrlType } from './types.js';
 
 /** Every vCard field a spreadsheet column can be connected to. */
 export const FIELD_KEYS = [

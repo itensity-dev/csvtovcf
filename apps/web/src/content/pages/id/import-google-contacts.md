@@ -3,7 +3,7 @@ url: cara-import-kontak-ke-google-kontak
 title: 'Cara Import Kontak VCF atau CSV ke Google Kontak (Gmail)'
 h1: 'Cara import kontak ke Google Kontak'
 description: 'Impor file .vcf (atau Google CSV) ke Google Kontak di web: Impor → Pilih file. Batasnya (3.000 per file, 25.000 per akun), label, dan cara menggabungkan duplikat.'
-lead: 'Google Kontak versi web bisa mengimpor .vcf atau Google CSV dengan beberapa klik. Setelah itu kontak tersinkron ke semua HP Android, ke Gmail, dan ke iPhone yang sudah ditambahkan akun Google-nya.'
+lead: 'Google Kontak versi web bisa mengimpor .vcf atau Google CSV dalam empat langkah. Setelah itu kontak tersinkron ke semua HP Android, ke Gmail, dan ke iPhone yang sudah ditambahkan akun Google-nya.'
 nav: 'Import ke Google Kontak'
 summary: 'Impor .vcf atau CSV di contacts.google.com, lengkap dengan batasnya.'
 steps:

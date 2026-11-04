@@ -1,13 +1,13 @@
-import type { ColumnMapping, FieldKey } from './fields';
-import { fieldFamily } from './fields';
-import type { Address, AddressType, Contact, EmailType, PhoneType, UrlType } from './types';
-import { emptyAddress, emptyContact } from './types';
-import { clean, cleanMultiline, looksLikeEmail, splitMulti } from './text';
-import { joinName, splitFullName } from './names';
-import { inferPhoneType, normalizePhone, type CountryCode } from './phones';
-import type { PhoneMode } from './types';
-import { detectDateOrder, parseDate, type DateOrder } from './dates';
-import { countryFromName } from './countries';
+import type { ColumnMapping, FieldKey } from './fields.js';
+import { fieldFamily } from './fields.js';
+import type { Address, AddressType, Contact, EmailType, PhoneType, UrlType } from './types.js';
+import { emptyAddress, emptyContact } from './types.js';
+import { clean, cleanMultiline, looksLikeEmail, splitMulti } from './text.js';
+import { joinName, splitFullName } from './names.js';
+import { inferPhoneType, normalizePhone, type CountryCode } from './phones.js';
+import type { PhoneMode } from './types.js';
+import { detectDateOrder, parseDate, type DateOrder } from './dates.js';
+import { countryFromName } from './countries.js';
 
 export interface ConvertOptions {
   /** Country for numbers written without a country code. */

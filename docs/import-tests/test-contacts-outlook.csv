@@ -1,0 +1,11 @@
+﻿First Name,Middle Name,Last Name,Title,Suffix,Nickname,Given Yomi,Surname Yomi,E-mail Address,E-mail 2 Address,E-mail 3 Address,Home Phone,Home Phone 2,Business Phone,Business Phone 2,Mobile Phone,Car Phone,Other Phone,Primary Phone,Pager,Business Fax,Home Fax,Other Fax,Company Main Phone,Callback,Radio Phone,Telex,TTY/TDD Phone,IMAddress,Job Title,Department,Company,Office Location,Manager's Name,Assistant's Name,Assistant's Phone,Company Yomi,Business Street,Business City,Business State,Business Postal Code,Business Country/Region,Home Street,Home City,Home State,Home Postal Code,Home Country/Region,Other Street,Other City,Other State,Other Postal Code,Other Country/Region,Personal Web Page,Spouse,Schools,Hobby,Location,Web Page,Birthday,Anniversary,Notes,Categories
+Ann,B.,Test-Lee,Dr.,Jr.,Annie,,,ann.test@example.com,ann.home@example.org,,,,+12025550110,,+12025550143,,+447911123456,,,,+12025550111,,,,,,,,Engineer,R&D,Example & Co,,,,,,"500 Market St
+Suite 4, Floor 2",San Francisco,CA,94105,United States,,,,,,,,,,,,,,,,https://example.com/ann,5/17/1990,6/12/2015,"Line one; with a semicolon, a comma and a backslash \
+Line two — long enough to be folded at 75 octets in every vCard version: 🎉👩‍👩‍👧‍👦","Test;Clients, VIP"
+Иван,Сергеевич,Петров,,,,,,,,,,,,,+79991234567,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"Кириллица в заметке, длинная строка для проверки переноса по октетам UTF-8 без разрыва букв.",
+محمد,,أحمد,,,,,,,,,,,,,+966501234567,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+太郎,,山田,,,,たろう,やまだ,,,,,,,,+819012345678,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Ayşe,,Yılmaz,,,,,,,,,,,,,+905321234567,,,,,,,,,,,,,,,,,,,,,,,,,,,"Bağdat Cd. 1
+Daire 3",İstanbul,,34728,Türkiye,,,,,,,,,,,,,,,
+,,,,,,,,office@example.de,,,,,+4930123456,,,,,,,,,,,,,,,,,,Company Only Ltd,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Zoë,,Ölmann-Ñúñez,,,,,,,,,,,,,12345,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Invalid number kept as typed,

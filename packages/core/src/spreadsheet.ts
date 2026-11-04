@@ -2,7 +2,7 @@
  * XLSX / XLS / ODS reading via SheetJS. Kept in a separate entry point
  * ("csvtovcf/spreadsheet") so the ~400 KB library is only loaded when a workbook is opened.
  */
-import { fromExcelSerial, formatPartialDate } from './dates';
+import { fromExcelSerial, formatPartialDate } from './dates.js';
 
 export interface SheetData {
   name: string;

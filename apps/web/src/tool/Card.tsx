@@ -44,9 +44,9 @@ export function Card({ c, s, intl, showFile }: { c: Contact; s: ToolStrings; int
   return (
     <article class="ccard" aria-label={c.fullName}>
       <header class="ccard__head">
-        <h4 class="ccard__name" dir="auto">
+        <h3 class="ccard__name" dir="auto">
           {c.fullName}
-        </h4>
+        </h3>
         <span class="ccard__row num">
           {showFile ? fmt(s.tool.card.file, { n: c.file + 1 }) + ' · ' : ''}№ {c.row}
         </span>

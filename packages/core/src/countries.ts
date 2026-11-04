@@ -1,5 +1,5 @@
 import { getCountries, type CountryCode } from 'libphonenumber-js/max';
-import { normalizeHeader } from './text';
+import { normalizeHeader } from './text.js';
 
 const LOCALES = ['en', 'es', 'pt', 'id', 'tr', 'de', 'fr', 'ru', 'it', 'pl', 'nl', 'vi', 'ar', 'ja', 'zh', 'ko', 'uk'];
 
