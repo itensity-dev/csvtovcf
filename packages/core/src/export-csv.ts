@@ -7,7 +7,7 @@ function csvCell(v: string): string {
 }
 
 export function toCsv(rows: string[][], bom = true): string {
-  return (bom ? '﻿' : '') + rows.map((r) => r.map(csvCell).join(',')).join('\r\n') + '\r\n';
+  return (bom ? '\uFEFF' : '') + rows.map((r) => r.map(csvCell).join(',')).join('\r\n') + '\r\n';
 }
 
 const GOOGLE_PHONE_LABEL: Record<PhoneType, string> = {

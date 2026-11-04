@@ -10,7 +10,7 @@ faq:
   - q: Can the original numbers be recovered from a CSV with 4.4E+11?
     a: 'No. The CSV contains only the digits shown, e.g. `4.4E+11`; the rest is not in the file. Go back to the Excel workbook (where the full number is still stored) or to the original source.'
   - q: Why did the leading zero disappear?
-    a: 'Excel treats `07911 123456` typed into a General cell as the number 7911123456, and numbers have no leading zeros. The same happens to the `+` of international numbers. Format the column as Text before typing or pasting.'
+    a: 'Excel treats `07911123456` typed into a General cell as the number 7911123456, and numbers have no leading zeros. The same happens to the `+` of `+447911123456`. Numbers written with spaces stay text. Format the column as Text before typing or pasting.'
   - q: Does the converter fix these numbers?
     a: 'Where possible. Numbers missing the leading 0 or the `+` are completed from the country you select and checked against its numbering plan. Scientific notation where every digit survived (`4.47911123456E+11`) is restored. `4.4E+11` with lost digits is flagged in the report, never guessed.'
   - q: Is there an Excel setting to stop this?
@@ -21,7 +21,7 @@ updated: 2026-11-04
 
 ## What happens, step by step
 
-1. **Typing or pasting.** A phone number in a cell with the default *General* format is stored as a number. The leading `0` and the `+` disappear immediately: `+44 7911 123456` → 447911123456.
+1. **Typing or pasting.** A phone number without spaces in a cell with the default *General* format is stored as a number. The leading `0` and the `+` disappear immediately: `+447911123456` → 447911123456, `07911123456` → 7911123456.
 2. **Displaying.** In General format, Excel shows numbers of 12 or more digits in scientific notation if the column is narrow: `4.47911E+11`. Inside the cell the full number is still stored (Excel keeps up to 15 significant digits).
 3. **Saving as CSV.** A CSV is plain text, and Excel writes each cell the way it is *displayed*. The file now contains `4.47911E+11`, and the last digits `123456` are gone. Microsoft has documented this behaviour since Excel 97.
 
@@ -35,7 +35,7 @@ Step 3 is the one that destroys data. Before it, the number can still be rescued
 
 ## How to stop it
 
-- **Format the phone column as Text before entering numbers** (Home → Number format → Text). Then `+44 7911 123456` stays exactly as typed, with the plus and spaces.
+- **Format the phone column as Text before entering numbers** (Home → Number format → Text). Then `+447911123456` stays exactly as typed, with the plus.
 - **Import CSV files as text** instead of double-clicking them: Data → From Text/CSV → *Transform Data* → set the phone column to *Text*.
 - **Microsoft 365:** File → Options → Data → *Automatic data conversion*: switch off removing leading zeros and keeping only 15 digits in scientific notation.
 - **Keep numbers international** (`+…`) in the source. They survive best when stored as text.

@@ -3,9 +3,30 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "types": ["astro/client"],
-    "exactOptionalPropertyTypes": false
+    "types": [
+      "astro/client"
+    ],
+    "exactOptionalPropertyTypes": false,
+    "baseUrl": ".",
+    "paths": {
+      "csvtovcf": [
+        "../../packages/core/src/index.ts"
+      ],
+      "csvtovcf/fields": [
+        "../../packages/core/src/fields.ts"
+      ],
+      "csvtovcf/spreadsheet": [
+        "../../packages/core/src/spreadsheet.ts"
+      ]
+    }
   },
-  "include": [".astro/types.d.ts", "src", "scripts", "tests"],
-  "exclude": ["dist"]
+  "include": [
+    ".astro/types.d.ts",
+    "src",
+    "scripts",
+    "tests"
+  ],
+  "exclude": [
+    "dist"
+  ]
 }

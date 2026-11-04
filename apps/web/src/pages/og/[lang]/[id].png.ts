@@ -11,5 +11,5 @@ export const GET: APIRoute = async ({ props }) => {
   const d = dict(ref.lang);
   const label = ref.kind === 'tool' ? d.footer.tools : ref.kind === 'legal' ? d.footer.project : d.footer.guides;
   const png = await ogPng({ title: ref.entry.data.h1, summary: ref.entry.data.summary, label, lang: ref.lang });
-  return new Response(png, { headers: { 'Content-Type': 'image/png' } });
+  return new Response(new Uint8Array(png).buffer as ArrayBuffer, { headers: { 'Content-Type': 'image/png' } });
 };

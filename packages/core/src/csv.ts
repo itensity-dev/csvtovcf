@@ -44,7 +44,7 @@ function countOutsideQuotes(line: string, d: string): number {
  * Handles Excel's "sep=;" first line and European ";" CSV.
  */
 export function detectDelimiter(text: string): DelimiterGuess {
-  const first = text.slice(0, 16).replace(/^﻿/, '');
+  const first = text.slice(0, 16).replace(/^\uFEFF/, '');
   const sep = /^sep=(.)\r?\n/i.exec(first);
   if (sep) {
     const d = sep[1] === '\\' ? '\t' : (sep[1] as Delimiter);
@@ -99,7 +99,7 @@ export interface ParsedCsv {
 
 /** Parse CSV text into rows of strings. Uses PapaParse (RFC 4180 + real-world quirks). */
 export function parseCsv(text: string, opts: ParseCsvOptions = {}): ParsedCsv {
-  let src = text.replace(/^﻿/, '');
+  let src = text.replace(/^\uFEFF/, '');
   const guess = opts.delimiter
     ? { delimiter: opts.delimiter, sepLine: /^sep=.\r?\n/i.test(src) }
     : detectDelimiter(src);

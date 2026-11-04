@@ -238,7 +238,7 @@ export default function Tool(props: ToolProps) {
   const st = summary.stats;
   const f = files[active] ?? files[0];
   const multi = files.length > 1;
-  const warnTotal = Object.values(summary.warningCounts).reduce((a, b) => a + (b ?? 0), 0);
+  const warnTotal = Object.values(summary.warningCounts).reduce<number>((a, b) => a + (b ?? 0), 0);
   const skippedTotal = st.skipped.empty + st.skipped['no-contact-data'] + st.skipped['repeated-header'];
   const pages = Math.max(1, Math.ceil(cards.total / summary.pageSize));
 
@@ -398,6 +398,8 @@ export default function Tool(props: ToolProps) {
               </p>
             ))}
             {f.parseErrors ? <p class="warnline">{fmt(T.file.parseErrors, { n: f.parseErrors })}</p> : null}
+            {/* scrollable region must be reachable by keyboard (WCAG 2.1.1) */}
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
             <div class="rawtable table-wrap" tabIndex={0} role="region" aria-label={T.file.preview}>
               <table>
                 <caption class="sr-only">{T.file.preview}</caption>
@@ -565,6 +567,7 @@ export default function Tool(props: ToolProps) {
 
         {tab === 'vcard' ? (
           <div role="tabpanel" id="panel-vcard" aria-labelledby="tab-vcard" class="listpanel">
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
             <pre class="vcardtext" tabIndex={0}>
               {summary.sampleVcf.replace(/\r\n/g, '\n')}
             </pre>

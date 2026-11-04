@@ -38,7 +38,7 @@ const home = by('home')?.path ?? '/';
     </nav>
     <div class="header-tools">
       <details class="menu menu--end">
-        <summary aria-label={d.header.language}><span class="mono">{LANG_META[lang].hreflang.toUpperCase()}</span></summary>
+        <summary aria-label={`${LANG_META[lang].hreflang.toUpperCase()} — ${d.header.language}`}><span class="mono">{LANG_META[lang].hreflang.toUpperCase()}</span></summary>
         <ul class="menu__list" lang="">
           {
             alternates.map((a) => (

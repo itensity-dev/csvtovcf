@@ -22,7 +22,7 @@ export function isBlank(s: string | undefined | null): boolean {
 /** Collapse inner whitespace and trim. Keeps line breaks out of single-line fields. */
 export function clean(s: string | undefined | null): string {
   if (!s) return '';
-  return s.replace(/[   ]/g, ' ').replace(/\s+/g, ' ').trim();
+  return s.replace(/[\u00A0\u2007\u202F]/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 /** Trim but keep line breaks (for notes and street addresses). */
@@ -31,7 +31,7 @@ export function cleanMultiline(s: string | undefined | null): string {
   return s
     .replace(/\r\n?/g, '\n')
     .split('\n')
-    .map((l) => l.replace(/[   ]/g, ' ').replace(/[ \t]+/g, ' ').trim())
+    .map((l) => l.replace(/[\u00A0\u2007\u202F]/g, ' ').replace(/[ \t]+/g, ' ').trim())
     .join('\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();

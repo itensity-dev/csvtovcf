@@ -31,7 +31,7 @@ Each kind of garbling has a typical look, and the look tells you what went wrong
 | `Иван` → `????` | Иван | letters lost when saving in a code page without them |
 | `Ã` or `�` in the middle of a name | — | a long line was cut inside a multi-byte letter |
 
-The first six cases can be repaired from the original file. Question marks cannot: the letters were replaced when the file was saved.
+The first five cases can be repaired from the original file; so can the last one, by converting again with a correct tool. Question marks cannot: the letters were replaced when the file was saved.
 
 ## How to fix it
 
@@ -42,7 +42,7 @@ The first six cases can be repaired from the original file. Question marks canno
 
 ## Why it happens
 
-A text file does not say which encoding it uses. Excel’s classic “CSV” format, Outlook’s CSV export and many CRMs write in the **Windows code page** of the computer: Windows-1252 in Western Europe and the Americas, 1251 for Cyrillic, 1254 for Turkish, 1256 for Arabic. A phone or web service then reads the file as UTF-8, and every non-English letter turns into two or three symbols. The reverse happens too: a UTF-8 file opened by old software that expects Windows-1252 shows `Ã©` for `é`.
+A text file does not say which encoding it uses. Excel’s classic “CSV” format, Outlook’s CSV export and many CRMs write in the **Windows code page** of the computer: Windows-1252 in Western Europe and the Americas, 1251 for Cyrillic, 1254 for Turkish, 1256 for Arabic. A phone or web service then reads the file as UTF-8, and every non-English letter turns into `�` or disappears. The reverse happens too: a UTF-8 file opened by software that expects Windows-1252 shows two or three symbols per letter — `Ã©` for `é`.
 
 Old phones add a third problem. They expect vCard 2.1 and only understand non-Latin text when it is marked `CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE`. Without that marking, a perfectly good UTF-8 file looks broken on them. Choose **vCard 2.1** in the converter for such phones.
 

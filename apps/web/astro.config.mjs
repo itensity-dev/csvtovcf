@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const core = (p) => fileURLToPath(new URL(`../../packages/core/src/${p}`, import.meta.url));
 const env = (k, d = '') => (process.env[k] ?? d).trim();
 
+
 const analytics = env('ANALYTICS_PROVIDER', 'none');
 const plausibleSrc = env('PLAUSIBLE_SRC', 'https://plausible.io/js/script.js');
 const plausibleOrigin = analytics === 'plausible' ? new URL(plausibleSrc).origin : null;

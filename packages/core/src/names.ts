@@ -83,7 +83,7 @@ export function splitFullName(input: string, opts: SplitOptions = {}): NameParts
     s = `${left} ${right}`;
   }
 
-  let words = s.split(' ').filter(Boolean);
+  const words = s.split(' ').filter(Boolean);
   if (words.length === 1) {
     out.given = words[0]!;
     return out;

@@ -85,7 +85,17 @@ const version = createHash('sha256').update(precache.join('\n') + swTemplate('')
 writeFileSync(join(dist, 'sw.js'), swTemplate(version));
 console.log(`sw.js: ${precache.length} files precached (version ${version})`);
 
-// ── 2. pre-compression ─────────────────────────────────────────────────────
+// ── 2. markdown code blocks scroll sideways on phones: make them keyboard-focusable (WCAG 2.1.1) ──
+let pres = 0;
+for (const p of walk(dist)) {
+  if (!p.endsWith('.html')) continue;
+  const html = readFileSync(p, 'utf8');
+  if (!html.includes('<pre>')) continue;
+  writeFileSync(p, html.replaceAll('<pre>', () => (pres++, '<pre tabindex="0">')));
+}
+console.log(`focusable code blocks: ${pres}`);
+
+// ── 3. pre-compression ─────────────────────────────────────────────────────
 const TEXT = new Set(['.html', '.css', '.js', '.mjs', '.svg', '.xml', '.txt', '.md', '.json', '.webmanifest', '.ico']);
 let n = 0;
 let saved = 0;
