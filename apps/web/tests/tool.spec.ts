@@ -86,6 +86,9 @@ test('changing a plug updates the cards', async ({ page }) => {
 test('report lists Excel-damaged numbers and skipped rows', async ({ page }) => {
   await page.goto('/');
   await page.locator('input[type=file]').setInputFiles(fx('excel-de-semicolon-cp1252.csv'));
+  // the sample already contains a 4.4E+11 number: wait until the loaded file is the one reported
+  await expect(page.locator('.fileinfo__name .mono')).toHaveText('excel-de-semicolon-cp1252.csv');
+  await expect(cards(page).first()).toHaveText('Max Mustermann');
   await expect(page.locator('.report')).toContainText('Destroyed by Excel');
   await page.locator('#tab-warnings').click();
   await expect(page.locator('#panel-warnings')).toContainText('4,91512E+11');

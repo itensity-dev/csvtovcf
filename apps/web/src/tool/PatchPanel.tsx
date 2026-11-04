@@ -142,16 +142,15 @@ export function PatchPanel({ file, fileIndex, s, onChange }: Props) {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(draw);
     };
-    const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
-    const first = idle ? idle(schedule, { timeout: 1500 }) : window.setTimeout(schedule, 200);
+    const hasIdle = 'requestIdleCallback' in window;
+    const first = hasIdle ? window.requestIdleCallback(schedule, { timeout: 1500 }) : window.setTimeout(schedule, 200);
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(schedule) : null;
     ro?.observe(el);
     return () => {
       ro?.disconnect();
       cancelAnimationFrame(raf);
-      const cancelIdle = (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
-      if (idle && cancelIdle) cancelIdle(first);
-      else clearTimeout(first);
+      if (hasIdle) window.cancelIdleCallback(first);
+      else window.clearTimeout(first);
     };
   }, [file, showEmpty]);
 
