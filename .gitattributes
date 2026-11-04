@@ -2,3 +2,5 @@
 packages/core/fixtures/** -text binary
 *.woff2 binary
 *.png binary
+docs/import-tests/** -text binary
+*.vcf -text binary
