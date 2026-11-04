@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg{fill:#ede3c8}.card{fill:#fffdf6;stroke:#1d1c1a}.r{stroke:#b8352a}.b{stroke:#a8c2dd}
+    @media (prefers-color-scheme:dark){.bg{fill:#191712}.card{fill:#24211b;stroke:#eee7d6}.r{stroke:#e2766a}.b{stroke:#34506f}}
+  </style>
+  <rect class="bg" width="64" height="64" rx="10"/>
+  <rect class="card" x="8" y="14" width="48" height="36" rx="2" stroke-width="3"/>
+  <path class="r" d="M12 24h40" stroke-width="3"/>
+  <path class="b" d="M12 32h40M12 39h40" stroke-width="2"/>
+  <circle cx="32" cy="46" r="2.5" fill="#ede3c8" stroke="#1d1c1a" stroke-width="1.5"/>
+</svg>

@@ -50,7 +50,7 @@ const sample3 = { ...emptyContact(0, 4), fullName: 'محمد أحمد', given: '
     <section class="section">
       <h2>Colour</h2>
       <ul class="sg-colors">
-        {colors.map(([v, n]) => <li><span class="sg-swatch" style={`background:var(${v})`}></span><code>{v}</code><span>{n}</span></li>)}
+        {colors.map(([v, n]) => <li><span class={`sg-swatch sw${v}`}></span><code>{v}</code><span>{n}</span></li>)}
       </ul>
       <p class="sg-note">Contrast (light): ink on card 16.7:1 · ink-2 on card 8.6:1 · ink-3 on card 6.9:1 · ink-3 on paper 5.5:1 · rule on card 5.8:1 · white on action 7.7:1 · action on card 7.5:1. Dark theme values are checked by the same script (<code>apps/web/scripts/contrast.mjs</code>).</p>
     </section>
@@ -59,7 +59,7 @@ const sample3 = { ...emptyContact(0, 4), fullName: 'محمد أحمد', given: '
       <h2>Type</h2>
       <p>IBM Plex Sans 400/600 for interface and headings, IBM Plex Mono 400/500 for data, card text and labels. SIL Open Font License, self-hosted woff2, <code>unicode-range</code> subsets.</p>
       <ul class="sg-type">
-        {sizes.map((v) => <li style={`font-size:var(${v})`}><code>{v}</code> Kontakt Контакт Ğğİı 連絡先 جهة اتصال</li>)}
+        {sizes.map((v) => <li class={`fs${v}`}><code>{v}</code> Kontakt Контакт Ğğİı 連絡先 جهة اتصال</li>)}
       </ul>
       <p class="mono">Mono: +1 202 555 0143 · ann.lee@example.com · 0123456789</p>
       <p><span class="label">Label</span> <span class="label label--framed">Framed label</span> <span class="label label--framed"><span class="step">1</span>Step</span></p>
@@ -68,13 +68,13 @@ const sample3 = { ...emptyContact(0, 4), fullName: 'محمد أحمد', given: '
     <section class="section">
       <h2>Space, lines, radius</h2>
       <ul class="sg-space">
-        {space.map((v) => <li><span style={`inline-size:var(${v})`}></span><code>{v}</code></li>)}
+        {space.map((v) => <li><span class={`sp${v}`}></span><code>{v}</code></li>)}
       </ul>
       <ul class="sg-lines">
-        <li><span style="border-block-start:var(--bw-hair) solid var(--ink)"></span><code>--bw-hair 1px</code></li>
-        <li><span style="border-block-start:var(--bw-rule) solid var(--rule)"></span><code>--bw-rule 2px (red rule)</code></li>
-        <li><span style="border-block-start:var(--bw-heavy) solid var(--action)"></span><code>--bw-heavy 3px (focus)</code></li>
-        <li><span style="border:var(--bw-hair) solid var(--ink);border-radius:var(--r-card);block-size:2rem"></span><code>--r-card 2px — the only radius</code></li>
+        <li><span class="ln-hair"></span><code>--bw-hair 1px</code></li>
+        <li><span class="ln-rule"></span><code>--bw-rule 2px (red rule)</code></li>
+        <li><span class="ln-heavy"></span><code>--bw-heavy 3px (focus)</code></li>
+        <li><span class="ln-radius"></span><code>--r-card 2px — the only radius</code></li>
       </ul>
     </section>
 
@@ -110,6 +110,41 @@ const sample3 = { ...emptyContact(0, 4), fullName: 'محمد أحمد', given: '
     </section>
   </div>
 </Base>
+
+<style is:global>
+  .sw--paper{background:var(--paper)}
+  .sw--paper-2{background:var(--paper-2)}
+  .sw--card{background:var(--card)}
+  .sw--card-2{background:var(--card-2)}
+  .sw--ink{background:var(--ink)}
+  .sw--ink-2{background:var(--ink-2)}
+  .sw--ink-3{background:var(--ink-3)}
+  .sw--hairline{background:var(--hairline)}
+  .sw--rule{background:var(--rule)}
+  .sw--line-blue{background:var(--line-blue)}
+  .sw--action{background:var(--action)}
+  .sw--action-soft{background:var(--action-soft)}
+  .fs--fs-0{font-size:var(--fs-0)}
+  .fs--fs-1{font-size:var(--fs-1)}
+  .fs--fs-2{font-size:var(--fs-2)}
+  .fs--fs-3{font-size:var(--fs-3)}
+  .fs--fs-4{font-size:var(--fs-4)}
+  .fs--fs-5{font-size:var(--fs-5)}
+  .fs--fs-6{font-size:var(--fs-6)}
+  .sp--s-1 {inline-size:var(--s-1)}
+  .sp--s-2 {inline-size:var(--s-2)}
+  .sp--s-3 {inline-size:var(--s-3)}
+  .sp--s-4 {inline-size:var(--s-4)}
+  .sp--s-5 {inline-size:var(--s-5)}
+  .sp--s-6 {inline-size:var(--s-6)}
+  .sp--s-7 {inline-size:var(--s-7)}
+  .sp--s-8 {inline-size:var(--s-8)}
+  .ln-hair{border-block-start:var(--bw-hair) solid var(--ink)}
+  .ln-rule{border-block-start:var(--bw-rule) solid var(--rule)}
+  .ln-heavy{border-block-start:var(--bw-heavy) solid var(--action)}
+  .ln-radius{border:var(--bw-hair) solid var(--ink);border-radius:var(--r-card);block-size:2rem}
+  
+</style>
 
 <style>
   .sg-colors,

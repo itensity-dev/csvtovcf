@@ -667,3 +667,6 @@ td.no::before {
     gap: var(--s-1) var(--s-3);
   }
 }
+.lang-link {
+  margin-inline-end: var(--s-4);
+}

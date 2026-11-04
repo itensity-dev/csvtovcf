@@ -7,7 +7,15 @@ import { z } from 'astro/zod';
  * Frontmatter holds the structured parts (title, steps, FAQ…), the body holds the prose.
  */
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  // CONTENT_LANGS=en,ru limits the build to some languages (local work only); default: all.
+  loader: glob({
+    pattern: process.env.CONTENT_LANGS
+      ? process.env.CONTENT_LANGS.includes(',')
+        ? `{${process.env.CONTENT_LANGS}}/*.md`
+        : `${process.env.CONTENT_LANGS}/*.md`
+      : '**/*.md',
+    base: './src/content/pages',
+  }),
   schema: z.object({
     /** URL segment in this language ("convertir-excel-a-vcf"); empty for the home page. */
     url: z.string().default(''),

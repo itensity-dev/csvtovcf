@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allPages } from '../../lib/routes';
+import { dict } from '../../i18n';
+import { LANG_META, type Lang } from '../../i18n/config';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = dict(lang);
+const pages = (await allPages()).filter((p) => p.lang === lang);
+const tools = pages.filter((p) => p.kind === 'tool');
+const guides = pages.filter((p) => p.kind === 'guide' || p.kind === 'article');
+const homes = (await allPages()).filter((p) => p.id === 'home');
+---
+<Base lang={lang} title={`${d.notFound.title} — csvtovcf`} description={d.notFound.lead} path={`${LANG_META[lang].prefix}/404/`} noindex>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="label label--framed"><span class="step">404</span></p>
+      <h1>{d.notFound.title}</h1>
+      <p class="lead">{d.notFound.lead}</p>
+    </header>
+    <section class="section">
+      <h2>{d.notFound.tools}</h2>
+      <ul class="related">
+        {tools.map((p) => <li><a href={p.path}><span class="t">{p.entry.data.nav}</span><span class="d">{p.entry.data.summary}</span></a></li>)}
+      </ul>
+    </section>
+    <section class="section">
+      <h2>{d.notFound.guides}</h2>
+      <ul class="related">
+        {guides.map((p) => <li><a href={p.path}><span class="t">{p.entry.data.nav}</span><span class="d">{p.entry.data.summary}</span></a></li>)}
+      </ul>
+    </section>
+    <p class="updated">{homes.map((h) => <a href={h.path} hreflang={LANG_META[h.lang].hreflang} class="lang-link">{LANG_META[h.lang].name}</a>)}</p>
+  </div>
+</Base>

@@ -1,0 +1,11 @@
+---
+import NotFound from '../../components/page/NotFound.astro';
+import { publishedLangs } from '../../lib/routes';
+import { LANG_META, type Lang } from '../../i18n/config';
+
+export async function getStaticPaths() {
+  return (await publishedLangs()).filter((l) => l !== 'en').map((l) => ({ params: { lang: LANG_META[l].prefix.slice(1) }, props: { l } }));
+}
+const { l } = Astro.props as { l: Lang };
+---
+<NotFound lang={l} />
