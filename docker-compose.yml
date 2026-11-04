@@ -1,0 +1,55 @@
+# Local:  docker compose up --build        → http://localhost:8080
+# VPS:    docker compose --profile vps up -d   (adds the HTTPS edge on :80/:443)
+services:
+  web:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-https://csvtovcf.com}
+        ANALYTICS_PROVIDER: ${ANALYTICS_PROVIDER:-none}
+        PLAUSIBLE_DOMAIN: ${PLAUSIBLE_DOMAIN:-csvtovcf.com}
+        PLAUSIBLE_SRC: ${PLAUSIBLE_SRC:-https://plausible.io/js/script.js}
+        ADS_ENABLED: ${ADS_ENABLED:-false}
+        ADSENSE_CLIENT: ${ADSENSE_CLIENT:-}
+        GSC_VERIFICATION: ${GSC_VERIFICATION:-}
+        BING_VERIFICATION: ${BING_VERIFICATION:-}
+        INDEXNOW_KEY: ${INDEXNOW_KEY:-}
+        UPX: ${UPX:-1}
+    image: ${IMAGE:-ghcr.io/itensity-dev/csvtovcf}:${TAG:-latest}
+    environment:
+      # must match the build: add the analytics origin when ANALYTICS_PROVIDER=plausible
+      CSP_CONNECT: ${CSP_CONNECT:-'self'}
+    ports:
+      - '${PORT:-8080}:8080'
+    read_only: true
+    tmpfs:
+      - /config
+      - /data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options: { max-size: '10m', max-file: '3' }
+
+  edge:
+    profiles: [vps]
+    image: caddy:2.11.8-alpine
+    depends_on: [web]
+    environment:
+      DOMAIN: ${DOMAIN:-csvtovcf.com}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./deploy/Caddyfile.vps:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -26,7 +26,9 @@ export function organization() {
 export function plain(s: string): string {
   return s
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/[*_`]/g, '')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/(^|\s)\*([^*\s][^*]*)\*/g, '$1$2')
+    .replace(/`/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }

@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/.astro
+**/coverage
+**/test-results
+**/playwright-report
+**/.lighthouseci
+.git
+.github
+.env
+.env.*
+docs/screenshots
+*.log

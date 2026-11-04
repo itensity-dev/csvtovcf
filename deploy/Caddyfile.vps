@@ -1,0 +1,22 @@
+# Edge Caddy on the VPS: automatic HTTPS (Let's Encrypt), www → apex redirect, proxy to the container.
+# Used by `docker compose --profile vps up -d`. Set DOMAIN and ACME_EMAIL in .env.
+{
+	email {$ACME_EMAIL}
+}
+
+www.{$DOMAIN} {
+	redir https://{$DOMAIN}{uri} permanent
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:8080
+	# Access log: kept 14 days, as stated on the privacy page. File contents never reach the server.
+	log {
+		output file /data/access.log {
+			roll_size 50MiB
+			roll_keep 14
+			roll_keep_for 336h
+		}
+	}
+}

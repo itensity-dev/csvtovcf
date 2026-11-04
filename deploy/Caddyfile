@@ -1,0 +1,71 @@
+# Caddy inside the container: static files on :8080, no TLS (put it behind deploy/Caddyfile.vps or any proxy).
+{
+	admin off
+	auto_https off
+	persist_config off
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+:8080 {
+	root * /srv
+
+	@health path /healthz
+	respond @health "ok" 200
+
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), interest-cohort=()"
+		# Script/style hashes come from the per-page <meta> CSP Astro generates; this header adds
+		# what a meta tag cannot carry. connect-src must stay as narrow as the meta policy.
+		Content-Security-Policy "frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; connect-src {$CSP_CONNECT}"
+		-Server
+	}
+
+	# hashed assets never change
+	@hashed path /_astro/*
+	header @hashed Cache-Control "public, max-age=31536000, immutable"
+	# pages, service worker, manifests: always revalidate
+	@revalidate path / *.html */ /sw.js /manifest.webmanifest
+	header @revalidate Cache-Control "no-cache"
+	@short path *.md *.txt *.xml /og/* *.png *.svg *.ico
+	header @short Cache-Control "public, max-age=3600"
+
+	@md path *.md
+	header @md Content-Type "text/markdown; charset=utf-8"
+	@txt path *.txt
+	header @txt Content-Type "text/plain; charset=utf-8"
+	@manifest path *.webmanifest
+	header @manifest Content-Type "application/manifest+json"
+	header /sw.js Service-Worker-Allowed "/"
+
+	file_server {
+		precompressed br gzip
+	}
+	encode zstd gzip
+
+	handle_errors {
+		@es path /es/*
+		@ptbr path /pt-br/*
+		@id path /id/*
+		@tr path /tr/*
+		@de path /de/*
+		@fr path /fr/*
+		@ru path /ru/*
+		rewrite @es /es/404/index.html
+		rewrite @ptbr /pt-br/404/index.html
+		rewrite @id /id/404/index.html
+		rewrite @tr /tr/404/index.html
+		rewrite @de /de/404/index.html
+		rewrite @fr /fr/404/index.html
+		rewrite @ru /ru/404/index.html
+		rewrite * /404.html
+		file_server {
+			precompressed br gzip
+		}
+	}
+}

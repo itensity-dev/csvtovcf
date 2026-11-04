@@ -43,6 +43,7 @@ export async function allPages(): Promise<PageRef[]> {
       out.push({ lang, id, kind: PAGE_KIND[id], slug, path: pathFor(lang, slug), mdPath: mdPathFor(lang, slug), entry: e });
     }
   }
+  out.sort((a, b) => PAGE_IDS.indexOf(a.id) - PAGE_IDS.indexOf(b.id));
   cache = out;
   return out;
 }
