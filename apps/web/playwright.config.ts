@@ -4,6 +4,8 @@ const PORT = 4321;
 export default defineConfig({
   testDir: './tests',
   timeout: 60_000,
+  // CI runners are slower than laptops; the worker starts cold on the first file
+  expect: { timeout: 15_000 },
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',

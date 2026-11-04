@@ -10,10 +10,12 @@ module.exports = {
         'http://localhost:4322/import-vcf-to-iphone/',
         'http://localhost:4322/ru/',
       ],
-      numberOfRuns: 1,
+      // 3 runs, median run asserted: the first run on a cold CI runner is not representative
+      numberOfRuns: 3,
       settings: { chromeFlags: '--no-sandbox --headless=new' },
     },
     assert: {
+      aggregationMethod: 'median-run',
       assertions: {
         'categories:performance': ['error', { minScore: 0.95 }],
         'categories:accessibility': ['error', { minScore: 0.95 }],

@@ -136,10 +136,23 @@ export function PatchPanel({ file, fileIndex, s, onChange }: Props) {
       setPaths(out);
       setHeight(g.height);
     };
-    draw();
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(draw) : null;
+    // Measuring the panel forces a layout: do it when the main thread is idle, not during hydration.
+    let raf = 0;
+    const schedule = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(draw);
+    };
+    const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+    const first = idle ? idle(schedule, { timeout: 1500 }) : window.setTimeout(schedule, 200);
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(schedule) : null;
     ro?.observe(el);
-    return () => ro?.disconnect();
+    return () => {
+      ro?.disconnect();
+      cancelAnimationFrame(raf);
+      const cancelIdle = (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
+      if (idle && cancelIdle) cancelIdle(first);
+      else clearTimeout(first);
+    };
   }, [file, showEmpty]);
 
   const change = (col: number, field: FieldKey, type?: string) => {
