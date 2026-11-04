@@ -23,10 +23,10 @@ const files = engine.meta();
 const countries = getCountries().map((c) => [c, getCountryCallingCode(c)] as [string, string]);
 const accept =
   pageId === 'xls-to-vcf'
-    ? '.xls,.xlsx,.ods,.csv,.tsv,.txt'
+    ? '.xls,.xlsx,.xlsm,.xlsb,.xml,.ods,.csv,.tsv,.txt'
     : pageId.includes('excel') || pageId === 'xlsx-to-vcf'
-      ? '.xlsx,.xls,.ods,.csv,.tsv,.txt'
-      : '.csv,.tsv,.txt,.xlsx,.xls,.ods,text/csv';
+      ? '.xlsx,.xlsm,.xlsb,.xls,.ods,.csv,.tsv,.txt'
+      : '.csv,.tsv,.txt,.xlsx,.xlsm,.xlsb,.xls,.ods,text/csv';
 ---
 <Tool
   client:load

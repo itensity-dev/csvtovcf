@@ -130,7 +130,8 @@ function extKind(name: string, bytes?: Uint8Array): FileKind {
   const n = name.toLowerCase();
   if (bytes && bytes[0] === 0x50 && bytes[1] === 0x4b) return n.endsWith('.ods') ? 'ods' : 'xlsx';
   if (bytes && bytes[0] === 0xd0 && bytes[1] === 0xcf) return 'xls';
-  if (n.endsWith('.xlsx') || n.endsWith('.xlsm')) return 'xlsx';
+  if (n.endsWith('.xlsx') || n.endsWith('.xlsm') || n.endsWith('.xlsb')) return 'xlsx';
+  if (n.endsWith('.xml') && bytes && /<Workbook|<\?mso-application/.test(new TextDecoder().decode(bytes.subarray(0, 2048)))) return 'xlsx';
   if (n.endsWith('.xls')) return 'xls';
   if (n.endsWith('.ods')) return 'ods';
   return 'csv';
