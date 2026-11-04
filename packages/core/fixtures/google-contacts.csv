@@ -1,0 +1,8 @@
+First Name,Middle Name,Last Name,Phonetic First Name,Phonetic Middle Name,Phonetic Last Name,Name Prefix,Name Suffix,Nickname,File As,Organization Name,Organization Title,Organization Department,Birthday,Notes,Photo,Labels,E-mail 1 - Label,E-mail 1 - Value,E-mail 2 - Label,E-mail 2 - Value,Phone 1 - Label,Phone 1 - Value,Phone 2 - Label,Phone 2 - Value,Address 1 - Label,Address 1 - Formatted,Address 1 - Street,Address 1 - City,Address 1 - PO Box,Address 1 - Region,Address 1 - Postal Code,Address 1 - Country,Address 1 - Extended Address,Website 1 - Label,Website 1 - Value,Event 1 - Label,Event 1 - Value
+Alice,B.,Example,,,,Dr.,,Ali,,Example Corp,Engineer,R&D,1990-05-17,"Met at the ""conference""; likes tea, coffee
+Second line 🎉",,* myContacts ::: Friends ::: Work,* Work,alice@example.com,Home,alice.home@example.org,Mobile,+1 202-555-0143 ::: +1 202-555-0187,Work,(202) 555-0110,Home,"1 Main St
+Springfield, IL 62701",1 Main St,Springfield,,IL,62701,USA,Apt 4,Profile,https://example.com/alice,Anniversary,2015-06-12
+Иван,Иванович,Петров,,,,,,,,ООО «Пример»,Директор,,--03-08,"Заметка с запятой, точкой с запятой; и обратной косой \ чертой",,* myContacts,,ivan@example.ru,,,Mobile,+7 999 000-12-34,,,,,,,,,,,,,,,
+,,,,,,,,,,Acme Widgets,,,,,,* myContacts,Work,sales@example.net,,,Work,+44 7911 123456,,,,,,,,,,,,,,,
+Yuki,,Tanaka,ゆき,,たなか,,,,,,,,,,,* myContacts ::: VIP,,yuki@example.jp,,,WhatsApp,+81 90-1234-5678,,,,,,,,,,,,,,,
+Alice,,Example,,,,,,,,,,,,duplicate by e-mail,,* myContacts,Other,ALICE@example.com,,,,,,,,,,,,,,,,,,,

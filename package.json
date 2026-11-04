@@ -1,0 +1,21 @@
+{
+  "name": "csvtovcf-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "csvtovcf.com — convert contact spreadsheets (CSV, Excel, Google Contacts, Outlook) to vCard in the browser.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @csvtovcf/web dev",
+    "build": "pnpm -r --filter csvtovcf build && pnpm --filter @csvtovcf/web build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:e2e": "pnpm --filter @csvtovcf/web test:e2e"
+  }
+}

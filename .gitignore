@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.astro/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+test-results/
+playwright-report/
+.lighthouseci/
+packages/core/fixtures/generated/
+.DS_Store
